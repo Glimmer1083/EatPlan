@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tabbar": "../../components/tabbarComponent/tabbar",
+    "wux-dialog": "../../dist/dialog/index",
+    "wux-actionsheet": "../../dist/actionsheet/index"
+  }
+}

@@ -1,0 +1,41 @@
+<!--pages/add_food/add_food.wxml-->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+    <view class="food_card" hover-class="none" hover-stop-propagation="false">
+        <wux-cell-group wx:if="{{type == 'food'}}" title="添加食谱">
+            <wux-cell hover-class="none">
+                <wux-input label="名称" placeholder="请填入食物名称" bind:change="onChange" data-name="name"/>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input label="单位" placeholder="请输入食物重量" type="number" bind:change="onChange" extra="g" data-name="amount"/>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input label="热量" placeholder="请输入摄入热量" type="number" bind:change="onChange" extra="cal" data-name="cal"/>
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group wx:if="{{type == 'drink'}}" title="添加饮品">
+            <wux-cell hover-class="none">
+                <wux-input label="名称" placeholder="请填入饮品名称" bind:change="onChange" data-name="name"/>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input label="单位" placeholder="请输入饮品量" type="number" bind:change="onChange" extra="ml" data-name="amount"/>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input label="热量" placeholder="请输入摄入热量" type="number" bind:change="onChange" extra="cal" data-name="cal"/>
+            </wux-cell>
+        </wux-cell-group>
+        <wux-cell-group wx:if="{{type == 'sport'}}" title="添加运动">
+            <wux-cell hover-class="none">
+                <wux-input label="名称" placeholder="请填入运动名称" bind:change="onChange" data-name="name"/>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input label="单位" placeholder="请输入运动时间" type="number" bind:change="onChange" extra="min" data-name="amount"/>
+            </wux-cell>
+            <wux-cell hover-class="none">
+                <wux-input label="热量" placeholder="请输入消耗热量" type="number" bind:change="onChange" extra="cal" data-name="cal"/>
+            </wux-cell>
+        </wux-cell-group>    
+    </view>
+    <view class="button_area" hover-class="none" hover-stop-propagation="false">
+      <wux-button block type="light" bind:tap="submit" class="submitButton">确认添加</wux-button>  
+    </view>
+</view>

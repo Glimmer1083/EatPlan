@@ -1,0 +1,18 @@
+{
+    "usingComponents": {
+      "tabbar": "../../components/tabbarComponent/tabbar",
+      "calendar": "plugin://calendar/calendar",
+      "wux-accordion-group": "../../dist/accordion-group/index",
+      "wux-accordion": "../../dist/accordion/index",
+      "i-icon" : "../../dist/i-icon/index",
+      "i-swipeout": "../../dist/swipeout/index",
+      "wux-swipe-action-group": "../../dist/swipe-action-group/index",
+      "wux-swipe-action": "../../dist/swipe-action/index",
+      "wux-cell-group": "../../dist/cell-group/index",
+      "wux-cell": "../../dist/cell/index",
+      "wux-icon": "../../dist/icon/index",
+      "wux-tabs": "../../dist/tabs/index",
+      "wux-tab": "../../dist/tab/index",
+      "wux-dialog": "../../dist/dialog/index"
+    }
+}

@@ -1,0 +1,5 @@
+<!--pages/graph/graph.wxml-->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+    <canvas canvas-id="areaCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+</view>
+

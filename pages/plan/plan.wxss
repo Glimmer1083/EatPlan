@@ -1,0 +1,68 @@
+.container {
+ 
+} 
+.text {
+  width: 100%;
+  position: relative;
+  height: 100rpx;
+  line-height: 100rpx;
+  border: 1px solid #ccc;
+}
+.companyInfo{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    line-height: 60rpx;
+    height: 60rpx;
+    justify-content: space-between;
+    align-items: center;
+}
+.companyInfo-left{
+    display: flex;
+    flex-direction: row;
+    line-height: 60rpx;
+    height: 60rpx;
+    font-size: 30rpx;
+}
+.companyInfo-right{
+    display: flex;
+    align-items: center;
+    line-height: 60rpx;
+    height: 60rpx;
+}
+.small-button{
+    font-size: 24rpx;
+    background: lightgreen;
+    height: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.plan_box {
+    width: 700rpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 auto;
+}
+.plan {
+    background-color: #fff;
+    width: 200rpx;
+    height: 300rpx;
+    border-radius: 20rpx;
+    margin: 20rpx 16rpx;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+.plan_icon {
+    width: 140rpx;
+    height: 140rpx;
+}
+.plan_name {
+    font-size: 24rpx;
+}

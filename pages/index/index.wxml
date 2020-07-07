@@ -1,0 +1,68 @@
+<tabbar tabbar="{{tabbar}}"></tabbar>
+<wxs module="filters" src="toFix.wxs"></wxs>
+<view class="content-container">
+  <view class="pick-header" bindtap="onPickHeaderClick">
+    {{today}}
+  </view>
+  <view class="pick-container {{needAnimation ? (openPicker ? 'slidown' : 'slidup') : ''}}" >
+    <calendar
+      calendar-style="calendar"
+      start-date="2010-01"
+      end-date="2088-01"
+      days-color="{{color}}"
+      weeks-type="full-en"
+      binddayClick="dayClick"
+    />
+  </view>
+  <view class="shadow" style="height:{{contentHeight}}px;line-height:{{contentHeight}}px" hidden="{{!openPicker}}" bind:tap="onPickHeaderClick">
+  </view>
+  <view class="content" style="height:{{contentHeight}}px">
+    <view class="ring-Container" hover-class="none" hover-stop-propagation="false">
+      <canvas wx:if="{{!ringImg}}" style="width:{{ringWidth}}px;height:{{ringWidth}}px;" canvas-id="circleBar">
+      </canvas>
+      <view wx:else class="" style="height: {{ringWidth}}px; width: {{ringWidth}}px;">
+        <image src="{{ringImg}}" style="height: {{ringWidth}}px; width: {{ringWidth}}px;"/>
+      </view>
+    </view>
+    <view class="indexButtonarea" hover-class="none" hover-stop-propagation="false">
+      <image class="" src="../../icon/sports.png" mode="aspectFit|aspectFill|widthFix" class="indexButton" bind:tap="changeTo1"></image>
+      <image class="" src="../../icon/eat.png" mode="aspectFit|aspectFill|widthFix" class="indexButton" bind:tap="changeTo2"></image>
+      <image class="" src="../../icon/weight.png" mode="aspectFit|aspectFill|widthFix" class="indexButton" bind:tap="changeTo3"></image>
+    </view>
+    <scroll-view class="info">
+      <swiper class="swiper_box" current="{{currentPage}}">
+        <swiper-item class="" item-id="">
+          <scroll-view class="swiper_card" scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50">
+            <view class="item_container" hover-class="none" hover-stop-propagation="false">
+              <wux-checkbox-group name="a" value="{{ value1 }}" title="运动目标" bind:change="onChangeSport">
+                  <wux-checkbox color="assertive" wx:key="key" wx:for="{{todayGoal.subgoal.sport}}" title="{{item.itemName}}" value="5" extra="运动{{item.amount}}分钟，消耗{{ filters.toFix(item.amount/30*item.calories) }} Kcal"/>
+              </wux-checkbox-group>
+              <wux-cell-group title="运动情况">
+                <wux-cell wx:key="key" wx:for="{{todayList.sport}}" thumb="../../icon/sport.png" title="{{item.itemName}}" extra="消耗{{ filters.toFix(item.amount/30*item.calories) }} Kcal"></wux-cell>
+              </wux-cell-group>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item class="" item-id="">
+          <scroll-view class="swiper_card" scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50">
+            <view class="item_container" hover-class="none" hover-stop-propagation="false">
+              <wux-checkbox-group name="a" value="{{ value1 }}" title="饮食目标" bind:change="onChangeSport">
+                <wux-checkbox color="assertive" wx:key="key" wx:for="{{todayGoal.subgoal.eat}}" title="{{item.itemName}}" value="5" extra="摄入{{item.amount}}g，{{ filters.toFix(item.amount/100*item.calories) }} Kcal"/>
+              </wux-checkbox-group>
+              <wux-cell-group title="饮食记录">
+                <wux-cell wx:key="key" wx:for="{{todayList.eat}}" title="{{item.itemName}}" thumb="../../icon/cai.png" extra="摄入{{ filters.toFix(item.amount/100*item.calories) }} Kcal"></wux-cell>
+              </wux-cell-group>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item class="" item-id="">
+          <scroll-view class="swiper_card" hover-class="none" hover-stop-propagation="false">
+            <wux-cell-group title="体重记录">
+                <canvas canvas-id="areaCanvas" class="canvas" bindtouchstart="touchHandler"></canvas>
+            </wux-cell-group>
+          </scroll-view>
+        </swiper-item>
+      </swiper>
+    </scroll-view>
+  </view>
+</view>

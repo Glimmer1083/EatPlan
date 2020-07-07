@@ -1,0 +1,454 @@
+/*根布局*/
+.content-container {
+    width: 100%;
+    position: absolute;
+}
+
+.calendar {
+    padding-top: 10px;
+}
+
+.ring-Container {
+    width: 100%;
+    padding-left: 25%;
+    position: relative;
+    top: 10rpx;
+}
+
+.indexButtonarea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top: 30rpx;
+    width: 100%;
+    height: 80rpx;
+}
+
+.indexButton {
+    width: 72rpx;
+    height: 72rpx;
+}
+
+.info {
+    position: relative;
+    top: 60rpx;
+}
+
+.swiper_box{
+    width: 100%;
+    background-color: #f17c67;
+    display: block;
+}
+
+.swiper_card{
+    width: 90%;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 20rpx;
+    padding: 20rpx 0;
+}
+/*筛选头部*/
+.pick-header {
+    width: 100%;
+    height: 64rpx;
+    z-index: 60;
+    position: fixed;
+    background-color: #f17c67;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35rpx;
+}
+
+/*筛选项容器布局*/
+.pick-container {
+    display: block;
+    width: 100%;
+    height: 620rpx;
+    background-color: lightgoldenrodyellow;
+    position: absolute;
+    z-index: 50;
+    top: -560rpx;
+    align-items: center;
+}
+
+/*筛选项隐藏 显示动画 start*/
+@keyframes slidown {
+    from {
+    transform: translateY(0%);
+    }
+
+    to {
+    transform: translateY(100%);
+    }
+}
+
+.slidown {
+    display: block;
+    animation: slidown 0.1s ease-in both;
+}
+
+@keyframes slidup {
+    from {
+    transform: translateY(100%);
+    }
+
+    to {
+    transform: translateY(0%);
+    }
+}
+
+.slidup {
+    display: block;
+    animation: slidup 0.2s ease-in both;
+}
+/*筛选项隐藏 显示动画 end*/
+
+/*筛选项显示出来的时候的阴影*/
+.shadow {
+    width: 100%;
+    background-color: rgba(1, 1, 1, 0.2);
+    position: absolute;
+    z-index: 40;
+    top: 64rpx;
+    height: 1250rpx;
+}
+
+/*内容容器布局*/
+.content {
+    width: 100%;
+    position: absolute;
+    top: 128rpx;
+    z-index: 20;
+    display: block;
+}
+
+.g_translatex{
+    transform: translateX(-50%);
+    -ms-transform: translateX(-50%); 	/* IE 9 */
+    -moz-transform: translateX(-50%); 	/* Firefox */
+    -webkit-transform: translateX(-50%); /* Safari 和 Chrome */
+    -o-transform: translateX(-50%); 	/* Opera */
+}
+
+.g_translatey{
+    transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.g_transition3s {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.g_transition5s {
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.g_transition1200s {
+    -webkit-transition: all 1.5s;
+    -moz-transition: all 1.5s;
+    -ms-transition: all 1.5s;
+    -o-transition: all 1.5s;
+    transition: all 1.5s;
+}
+
+.g_scale0 {
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+}
+
+.g_scale1 {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+.g_ty0 {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+}
+
+.g_ty1 {
+    -webkit-transform: translateY(-1334rpx);
+    -moz-transform: translateY(-1334rpx);
+    -ms-transform: translateY(-1334rpx);
+    -o-transform: translateY(-1334rpx);
+    transform: translateY(-1334rpx);
+}
+
+.g_ty2 {
+    -webkit-transform: translateY(1334rpx);
+    -moz-transform: translateY(1334rpx);
+    -ms-transform: translateY(1334rpx);
+    -o-transform: translateY(1334rpx);
+    transform: translateY(1334rpx);
+}
+
+.modal_mask {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal_scale {
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 309px;
+    height: 500rpx;
+    margin: auto;
+    overflow: hidden;
+    background: #fff;
+    text-align: center;
+
+/* transform: scale(0);
+transition: all 0.3s;  */
+}
+
+.modal_slide{
+    position: fixed;
+    z-index: 1001;
+    right: 0;
+    left: 0;
+    width: 100%;
+    min-height: 200rpx;
+    max-height: 1000rpx;
+    overflow-y: scroll;
+    margin: auto;
+    background: #fff;
+
+/* 
+从上往下滑动 
+top: 0;
+transition: all .3s;
+transform: translateY(-1334rpx); */
+
+/* 
+从下往上滑动 
+    bottom: 0;
+    transition: all .3s;
+    transform: translateY(1334rpx);
+    */ 
+}
+
+.foodList {
+	height: 100%;
+}
+
+.listContainer {
+	height: 60vh;
+}
+
+.food {
+	font-size: 30rpx;
+}
+
+.desc {
+	line-height: 30px;
+	color: #666;
+	text-align: center;
+	display: block;
+	font-size: 18px;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+}
+
+/*金额*/
+.value {
+	color: #f17c67;
+	font-size: 80rpx;
+	text-align: center;
+	line-height: 140rpx;
+}
+
+/*单位*/
+.unit {
+	font-size: 16px;
+	color: gray;
+	content: '克';
+	margin-left: 5px;
+}
+
+/*尺子*/
+#canvas-ruler {
+	width: 1000px;
+	/*height: 80px;*/
+	/*border: 1px solid #ccc;*/
+}
+
+/*游标*/
+#canvas-cursor {
+	width: 100%;
+	height: 40px;
+	/*border: 1px solid #cc1;*/
+}
+
+.bordered:before {
+	content: " ";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	height: 2rpx;
+	border-bottom: 2rpx solid #D9D9D9;
+	color: #D9D9D9;
+	transform-origin: 0 100%;
+	transform: scaleY(0.5);
+}
+
+.content {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    background-color: #fff;
+}
+
+.i-swipeout-demo-item{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.i-swipeout-demo-title{
+    height:30px;
+    padding:0 15px;
+    line-height:30px;
+    margin-top:20px;
+    margin-bottom:5px;
+}
+.i-swipeout-demo-des{
+    margin-bottom:10px;
+    font-size:15px;
+    color:#ff9900;
+    position: relative;
+    left: 20rpx;
+}
+/*左中右结构*/
+.i-swipeout-image{
+    float:left;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    border-radius:40px;
+    background: #f17c67;
+    position: absolute;
+    left: 0;
+}
+.i-swipeout-des{
+    margin-left:40px;
+}
+.i-swipeout-des-detail{
+    font-size:12px;
+    word-break:break-all;
+    color:#80848f;
+}
+
+/*自定义按钮*/
+.i-swipeout-demo-button-group{
+    height:100%;
+    width:100%;
+}
+.i-swipeout-demo-button{
+    width:70px;
+    float:left;
+    display: flex;
+    height:100%;
+    justify-content: center;
+    background:#f17c67;
+    color:#fff;
+    align-items:center;
+}
+
+.record {
+    border-radius: 20rpx;
+    position: relative;
+    top: 20rpx;
+    background-color: #fff;
+    margin: 0 auto;
+    width: 700rpx;
+}
+
+.caption-wrap{
+    margin-bottom: 30px;
+}
+
+.caption-title{
+    font-weight: bold;
+    padding:20px 10px;
+}
+
+.collapse-item-title{
+    font-size: 26px;
+    color: #737373;
+    font-weight: bold;
+}
+
+.collapse-item-content{
+    font-size: 14px;
+    color: #444444;
+}
+
+.plan_box {
+    width: 700rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    margin: 0 auto;
+    padding-bottom: 60rpx;
+    position: relative;
+    top: 100rpx;
+}
+
+.submitButton {
+    position: relative;
+    width: 700rpx;
+    top: 140rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+}
+
+.addimage {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.content1 {
+    height: 1150rpx;
+}
+
+.addButton{
+    width: 100%;
+    border: none;
+    background-color: #f17c67;
+    border-radius: 0;
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+}

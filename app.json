@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/graph/graph",
+    "pages/add_plan/add_plan",
+    "pages/plan/plan",
+    "pages/plan_detail/plan_detail",
+    "pages/middle/middle",
+    "pages/food/food",
+    "pages/aboutme/aboutme",
+    "pages/add_item/add_item"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f17c67",
+    "navigationBarTitleText": "EatPlan",
+    "backgroundColor": "#f17c67"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#979795",
+    "borderStyle": "white",
+    "selectedColor": "#1c1c1b",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "",
+        "iconPath": "components/tabbarComponent/icon/index.png",
+        "selectedIconPath": "components/tabbarComponent/icon/index_s.png"
+      },
+      {
+        "pagePath": "pages/food/food",
+        "text": "",
+        "iconPath": "components/tabbarComponent/icon/food.png",
+        "selectedIconPath": "components/tabbarComponent/icon/food_s.png"
+      },
+      {
+        "pagePath": "pages/plan/plan",
+        "text": "",
+        "iconPath": "components/tabbarComponent/icon/plan.png",
+        "selectedIconPath": "components/tabbarComponent/icon/plan_s.png"
+      },
+      {
+        "pagePath": "pages/aboutme/aboutme",
+        "text": "",
+        "iconPath": "components/tabbarComponent/icon/me.png",
+        "selectedIconPath": "components/tabbarComponent/icon/me_s.png"
+      }
+    ]
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

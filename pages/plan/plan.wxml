@@ -1,0 +1,20 @@
+<wux-dialog id="wux-dialog" />
+<wux-dialog id="wux-dialog--alert" />
+<wux-actionsheet id="wux-actionsheet" />
+  <tabbar tabbar="{{tabbar}}"></tabbar>
+<view class="container">
+    <view class="plan_box" hover-class="none" hover-stop-propagation="false">
+    <view class="plan" hover-class="none" hover-stop-propagation="false" bind:tap="prompt">
+        <image class="plan_icon" src="../../icon/jia3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+    </view>
+    <view wx:for="{{allplan}}" wx:key="key" class="plan" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bind:longpress="bindLongTap" bindtap="bindTap" data-name="{{item.name}}">
+        <image class="plan_icon" src="../../icon/shu.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""> </image>
+        <view class="plan_name" hover-class="none" hover-stop-propagation="false">
+            {{item.name}}  
+        </view>
+        <view class="plan_name" hover-class="none" hover-stop-propagation="false" wx:if="{{item.used}}">
+            (已启用)  
+        </view>
+    </view>
+    </view>
+</view>

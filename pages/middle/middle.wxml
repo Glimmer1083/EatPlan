@@ -1,0 +1,209 @@
+<wxs module="filters" src="toFix.wxs"></wxs>
+<wux-keyboard id="wux-keyboard" />
+<weekCalendar timeBean="{{timeBean}}" bind:lastWeek="lastWeek" bind:nextWeek="nextWeek" bind:dayClick="dayClick"></weekCalendar>
+<wux-dialog id="wux-dialog" theme="dark"/>
+<wux-fab-button
+  wx:if="{{floatButton}}"
+  position="bottomRight" 
+  theme="stable" 
+  direction="vertical"
+  buttons="{{ buttons }}" 
+  bind:click="onClick" 
+/>
+<view class="content-container" hover-class="none" hover-stop-propagation="false">
+  <scroll-view class="record" scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50" >
+    <view class="add_message" hover-class="none" hover-stop-propagation="false" wx:if="{{addMessage}}">
+        今天无记录，赶紧添加吧！
+    </view>
+    <wux-accordion-group title="点击展开，左滑可编辑" default-current="{{ ['0', '1'] }}" wx:if="{{!addMessage}}">  
+      <wux-accordion thumb="../../icon/tizhong.png" title="体重">
+          <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{120}}" unclosable="{{true}}" toggle="{{toggle}}" bindchange="handlerCloseButton">
+            <view slot="content">
+                <view class="i-swipeout-image">
+                    <i-icon size="20" color="#FFFFFF" type="flag"></i-icon>
+                </view>
+                <view class="i-swipeout-des">
+                    <view class="i-swipeout-des-h2">{{ todayList.weight }}公斤</view>
+                    <view class="i-swipeout-des-detail">点击加号可修改</view>
+                </view>
+            </view>
+          </i-swipeout>
+      </wux-accordion>
+      <wux-accordion thumb="../../icon/cai.png" title="饮食">
+          <i-swipeout  wx:for="{{todayList.eat}}" wx:key="key" i-class="i-swipeout-demo-item" operateWidth="{{120}}" unclosable="{{true}}" toggle="{{toggle}}" bindchange="handlerCloseButton">
+            <view slot="content">
+                <view class="i-swipeout-image">
+                    <i-icon size="20" color="#FFFFFF" type="task"></i-icon>
+                </view>
+                <view class="i-swipeout-des">
+                    <view class="i-swipeout-des-h2">{{item.itemName}}</view>
+                    <view class="i-swipeout-des-detail">摄入{{item.amount}}克，共{{ filters.toFix(item.amount/100*item.calories) }}千卡</view>
+                </view>
+            </view>
+            <view slot="button" class="i-swipeout-demo-button-group" style="background:#f17c67;">
+                <view class="i-swipeout-demo-button" style="width:60px" bind:tap="edit_amount" data-no="{{item.no}}" data-type='eat'> <i-icon size="32" type="brush_fill"></i-icon></view>
+                <view class="i-swipeout-demo-button" style="width:60px" bind:tap="delete_record" data-no="{{item.no}}" data-type='eat'><i-icon size="32" type="trash_fill"></i-icon></view>
+            </view>
+          </i-swipeout>
+      </wux-accordion>
+      <wux-accordion thumb="../../icon/sport.png" title="运动">
+          <i-swipeout  wx:for="{{todayList.sport}}" wx:key="key" i-class="i-swipeout-demo-item" operateWidth="{{120}}" unclosable="{{true}}" toggle="{{toggle}}" bindchange="handlerCloseButton">
+            <view slot="content">
+                <view class="i-swipeout-image">
+                    <i-icon size="20" color="#FFFFFF" type="task"></i-icon>
+                </view>
+                <view class="i-swipeout-des">
+                    <view class="i-swipeout-des-h2">{{item.itemName}}</view>
+                    <view class="i-swipeout-des-detail">运动{{item.amount}}分钟，共消耗{{ filters.toFix(item.amount/30*item.calories) }}千卡</view>
+                </view>
+            </view>
+            <view slot="button" class="i-swipeout-demo-button-group" style="background:#f17c67;">
+                <view class="i-swipeout-demo-button" style="width:60px" bind:tap="edit_amount" data-no="{{item.no}}" data-type='sport'> <i-icon size="32" type="brush_fill"></i-icon></view>
+                <view class="i-swipeout-demo-button" style="width:60px" bind:tap="delete_record" data-no="{{item.no}}" data-type='sport'><i-icon size="32" type="trash_fill"></i-icon></view>
+            </view>
+          </i-swipeout>
+      </wux-accordion>
+      <wux-accordion thumb="../../icon/heshuired.png" title="喝水">
+          <i-swipeout  wx:for="{{todayList.drink}}" wx:key="key" i-class="i-swipeout-demo-item" operateWidth="{{120}}" unclosable="{{true}}" toggle="{{toggle}}" bindchange="handlerCloseButton">
+            <view slot="content">
+                <view class="i-swipeout-image">
+                    <i-icon size="20" color="#FFFFFF" type="task"></i-icon>
+                </view>
+                <view class="i-swipeout-des">
+                    <view class="i-swipeout-des-h2">{{item.itemName}}</view>
+                    <view class="i-swipeout-des-detail">摄入{{item.amount}}克，共{{ filters.toFix(item.amount/100*item.calories) }}千卡</view>
+                </view>
+            </view>
+            <view slot="button" class="i-swipeout-demo-button-group" style="background:#f17c67;">
+                <view class="i-swipeout-demo-button" style="width:60px" bind:tap="edit_amount" data-no="{{item.no}}" data-type='drink'> <i-icon size="32" type="brush_fill"></i-icon></view>
+                <view class="i-swipeout-demo-button" style="width:60px" bind:tap="delete_record" data-no="{{item.no}}" data-type='drink'><i-icon size="32" type="trash_fill"></i-icon></view>
+            </view>
+            </i-swipeout>
+      </wux-accordion>
+    </wux-accordion-group>
+  </scroll-view>
+
+</view>
+
+<view class='modal_mask' wx:if="{{isBottomModal}}" bindtap='cancelInputB'></view>
+<view class='modal_slide g_transition3s {{isBottomModal ? "g_ty0" : "g_ty2"}}' style='bottom: 0;'>
+  <block wx:if="{{type == 'eat'}}">
+    <wux-tabs wux-class="bordered" controlled scroll current="{{ eat_key }}" bindchange="onTabsChange" theme="assertive">
+      <block wx:for="{{ eat_tabs }}" wx:key="key">
+          <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+      </block>
+    </wux-tabs>
+    <swiper current="{{ eat_index }}" bindchange="onSwiperChange" class="listContainer">
+      <block wx:for="{{ eat_tabs }}" wx:key="key" wx:for-item="i">
+          <swiper-item>
+            <scroll-view class="foodList" scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50" >
+              <wux-cell-group title="" style="height: 1000rpx">
+                <wux-cell 
+                  wx:for="{{i.content}}" 
+                  wx:key="key" 
+                  wx:for-item="j" 
+                  title="{{ j.foodName }}" 
+                  extra="{{ filters.toFix(j.Calories) }} k / 100g" 
+                  class="food" 
+                  bind:tap="chooseItem"
+                  data-itemName="{{ j.foodName }}"
+                  data-Calories="{{ filters.toFix(j.Calories) }}"
+                  data-type="{{ j.type }}"
+                  ></wux-cell>
+              </wux-cell-group>
+            </scroll-view>
+          </swiper-item>
+      </block>
+    </swiper>
+  </block>
+  <block wx:elif="{{type == 'drink'}}">
+    <wux-tabs wux-class="bordered" controlled scroll current="{{ drink_key }}" bindchange="onTabsChange" theme="assertive">
+    <block wx:for="{{ drink_tabs }}" wx:key="key">
+        <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+    </block>
+    </wux-tabs>
+    <swiper current="{{ drink_index }}" bindchange="onSwiperChange" class="listContainer">
+      <block wx:for="{{ drink_tabs }}" wx:key="key" wx:for-item="i">
+          <swiper-item>
+            <scroll-view class="foodList" scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50" >
+              <wux-cell-group title="" style="height: 1000rpx">
+                <wux-cell 
+                  wx:for="{{i.content}}" 
+                  wx:key="key" 
+                  wx:for-item="j" 
+                  title="{{ j.foodName }}" 
+                  extra="{{ filters.toFix(j.Calories) }} k / 100ml" 
+                  class="food" 
+                  bind:tap="chooseItem"
+                  data-itemName="{{ j.foodName }}"
+                  data-Calories="{{ filters.toFix(j.Calories) }}"
+                  data-type="{{ j.type }}"
+                  ></wux-cell>
+              </wux-cell-group>
+            </scroll-view>
+          </swiper-item>
+      </block>
+    </swiper>
+  </block>
+  <block wx:elif="{{type == 'sport'}}">
+    <view class="" hover-class="none" hover-stop-propagation="false">
+      <wux-tabs wux-class="bordered" controlled scroll current="{{ sport_key }}" bindchange="onTabsChange" theme="assertive">
+      <block wx:for="{{ sport_tabs }}" wx:key="key">
+          <wux-tab key="{{ item.key }}" title="{{ item.title }}"></wux-tab>
+      </block>
+      </wux-tabs>
+      <swiper current="{{ sport_index }}" bindchange="onSwiperChange" class="listContainer">
+        <block wx:for="{{ sport_tabs }}" wx:key="key" wx:for-item="i">
+            <swiper-item>
+              <scroll-view class="foodList" scroll-x="false" scroll-y="false" upper-threshold="50" lower-threshold="50" >
+                <wux-cell-group title="" style="height: 1000rpx">
+                  <wux-cell 
+                    wx:for="{{i.content}}" 
+                    wx:key="key" 
+                    wx:for-item="j" 
+                    title="{{ j.sportName }}" 
+                    extra="{{ filters.toFix(j.Calories) }} k / 30min" 
+                    class="food" 
+                    bind:tap="chooseItem"
+                    data-itemName="{{ j.sportName }}"
+                    data-Calories="{{ filters.toFix(j.Calories) }}"
+                    data-type="{{ j.type }}"
+                    ></wux-cell>
+                </wux-cell-group>
+              </scroll-view>
+            </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </block>
+  <block wx:elif="{{type == 'weight'}}">
+    <view class="" hover-class="none" hover-stop-propagation="false">
+      weight
+    </view>
+  </block>
+</view>
+<view>
+  <view class='modal_mask' wx:if="{{isScaleModal}}" bindtap='cancelInputS'></view>
+  <view class='modal_scale g_transition3s {{isScaleModal ? "g_scale1" : "g_scale0"}}' style='border-radius: 20rpx;'>
+    <view id="ruler-box" class='modal_scale'>
+      <text class="value">{{value}}</text><text class="unit">{{type=='sport'?'分钟':'克/毫升'}}</text>
+      <scroll-view scroll-x="true" class="line" bindscroll="bindscroll" scroll-left="{{scrollLeft}}">
+        <canvas
+          canvas-id="canvas-ruler"
+          wx:if="{{!rulerImg}}"
+          style="height: {{canvasHeight}}px; width: {{canvasWidth}}px;">
+        </canvas>
+        <image wx:else src="{{rulerImg}}" style="height: {{canvasHeight}}px; width: {{canvasWidth}}px;" />
+      </scroll-view>
+        <canvas
+          canvas-id="canvas-cursor"
+          wx:if="{{!cursorImg}}"
+          style="height: 40px; width: {{canvasWidth}}px;">
+        </canvas>
+        <image wx:else src="{{cursorImg}}" style="height: 40px; width: 309px;"/>
+      <button wx:if="{{menu == 'add'}}" class="addButton" bind:tap="addRecord">确认添加</button>
+      <button wx:elif="{{menu =='edit'}}" class="addButton" bind:tap="editRecord">确认修改</button>
+    </view>
+  </view>
+</view>
+  

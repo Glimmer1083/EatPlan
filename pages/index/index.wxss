@@ -1,0 +1,219 @@
+/*根布局*/
+page{
+    width: 100%;
+    height: 100%;
+}
+.content-container {
+    width: 100%;
+    position: absolute;
+}
+.calendar {
+    padding-top: 10px;
+}
+.ring-Container {
+    width: 750rpx;
+    position: relative;
+    top: 10rpx;
+    display: flex;
+    justify-content: space-around;
+}
+.indexButtonarea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+    top: 30rpx;
+    width: 100%;
+    height: 80rpx;
+}
+.indexButton {
+    width: 72rpx;
+    height: 72rpx;
+}
+.info {
+    position: relative;
+    top: 60rpx;
+}
+.swiper_box{
+    width: 100%;
+    height: 430rpx;
+    background-color: #f17c67;
+    display: block;
+}
+.swiper_card{
+    width: 95%;
+    height: 430rpx;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 20rpx;
+}
+.item_container {
+    width: 95%;
+    margin: 0 auto;
+}
+/*筛选头部*/
+.pick-header {
+    width: 100%;
+    height: 64rpx;
+    z-index: 60;
+    position: fixed;
+    background-color: #f17c67;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35rpx;
+}
+
+/*筛选项容器布局*/
+.pick-container {
+    display: block;
+    width: 100%;
+    height: 620rpx;
+    background-color: lightgoldenrodyellow;
+    position: absolute;
+    z-index: 50;
+    top: -560rpx;
+    align-items: center;
+}
+
+/*筛选项隐藏 显示动画 start*/
+@keyframes slidown {
+    from {
+    transform: translateY(0%);
+    }
+
+    to {
+    transform: translateY(100%);
+    }
+}
+
+.slidown {
+    display: block;
+    animation: slidown 0.1s ease-in both;
+}
+
+@keyframes slidup {
+    from {
+    transform: translateY(100%);
+    }
+
+    to {
+    transform: translateY(0%);
+    }
+}
+
+.slidup {
+    display: block;
+    animation: slidup 0.2s ease-in both;
+}
+/*筛选项隐藏 显示动画 end*/
+
+/*筛选项显示出来的时候的阴影*/
+.shadow {
+    width: 100%;
+    background-color: rgba(1, 1, 1, 0.2);
+    position: absolute;
+    z-index: 40;
+    top: 64rpx;
+    height: 1000rpx;
+}
+
+/*内容容器布局*/
+.content {
+    width: 100%;
+    position: absolute;
+    top: 64rpx;
+    z-index: 20;
+    display: block;
+}
+
+.i-cell-padding{
+    padding:5px 0px!important;
+    font-size:20px;
+}
+
+/*左中右结构*/
+.i-swipeout-image{
+    float:left;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    text-align:center;
+    border-radius:40px;
+    background: #f17c67;
+    position: absolute;
+    left: 70rpx;
+}
+.i-swipeout-des{
+    margin-left:40px;
+}
+.i-swipeout-des-detail{
+    font-size:12px;
+    word-break:break-all;
+    color:#80848f;
+}
+
+/*自定义按钮*/
+.i-swipeout-demo-button-group{
+    height:100%;
+    width:100%;
+}
+.i-swipeout-demo-button{
+    width:70px;
+    float:left;
+    display: flex;
+    height:100%;
+    justify-content: center;
+    background:#f17c67;
+    color:#fff;
+    align-items:center;
+}
+.add_message {
+    height: 200rpx;
+    text-align: center;
+    color: #80848f;
+    padding: 80rpx 0;
+}
+.ring_container {
+    width: 750rpx;
+    text-align: center;
+}
+
+.value {
+    color: #fff;
+}
+
+.circle-bar-wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 20%;
+}
+.circle-bar-wrap .font{
+    max-height: 62rpx;
+    font-size: 26rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    white-space: normal;
+}
+.circle-bar-wrap .val{
+    margin-top: 20rpx;
+    font-size: 50rpx;
+    height: 65rpx;
+}
+
+.font {
+    color: #ffffff;
+    font-size: 24rpx;
+}
+
+.canvas {
+    width: 100%;
+    height: 180px;
+}

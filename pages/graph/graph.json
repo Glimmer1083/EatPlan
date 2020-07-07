@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "double-line-chart": "../../components/double-line-chart/double-line-chart"
+  }
+}

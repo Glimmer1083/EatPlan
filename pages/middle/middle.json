@@ -1,0 +1,20 @@
+{
+  "usingComponents": {
+    "weekCalendar": "../../components/weekCalendar/weekCalendar",
+    "wux-fab-button": "../../dist/fab-button/index",
+    "wux-accordion-group": "../../dist/accordion-group/index",
+    "wux-accordion": "../../dist/accordion/index",
+    "wux-tabs": "../../dist/tabs/index",
+    "wux-tab": "../../dist/tab/index",
+    "wux-badge": "../../dist/badge/index",
+    "wux-cell-group": "../../dist/cell-group/index",
+    "wux-cell": "../../dist/cell/index",
+    "wux-button": "../../dist/button/index",
+    "wux-dialog": "../../dist/dialog/index",
+    "i-icon" : "../../dist/i-icon/index",
+    "i-swipeout": "../../dist/swipeout/index",
+    "i-collapse": "../../dist/collapse/index",
+    "i-collapse-item": "../../dist/collapse-item/index",
+    "wux-keyboard": "../../dist/keyboard/index"
+  }
+}

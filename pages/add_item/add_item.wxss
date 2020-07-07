@@ -1,0 +1,38 @@
+/* pages/add_food/add_food.wxss */
+.container {
+    background-color: #f17c67
+}
+
+.food_card {
+    width: 700rpx;
+    border-radius: 20rpx;
+    background-color: #ffffff;
+    height: 450rpx;
+    position: relative;
+    top: 20rpx;
+}
+
+.input {
+
+}
+
+.wux-input__label {
+    text-align: center;
+}
+
+.button_area {
+    width: 700rpx;
+    position: relative;
+    top: 40rpx;
+    border-radius: 20rpx;
+}
+
+.wux-button {
+    border-radius: 20rpx;
+}
+
+.submitButton {
+    width: 700rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+}
